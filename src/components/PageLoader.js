@@ -7,7 +7,6 @@ export default function PageLoader() {
     const [fadeOut, setFadeOut] = useState(false);
 
     useEffect(() => {
-        // Minimum loading time for smooth experience
         const minLoadTime = setTimeout(() => {
             setFadeOut(true);
             setTimeout(() => setLoading(false), 600);
@@ -18,120 +17,109 @@ export default function PageLoader() {
 
     if (!loading) return null;
 
+    const loaderStyle = {
+        position: 'fixed',
+        inset: 0,
+        zIndex: 9999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%)',
+        transition: 'opacity 0.6s ease, visibility 0.6s ease',
+        opacity: fadeOut ? 0 : 1,
+        visibility: fadeOut ? 'hidden' : 'visible'
+    };
+
+    const logoTextStyle = {
+        fontFamily: "'Playfair Display', serif",
+        fontSize: '3rem',
+        fontWeight: 600,
+        color: '#f5f5f5',
+        letterSpacing: '0.1em',
+        display: 'block'
+    };
+
+    const logoAccentStyle = {
+        fontFamily: "'Playfair Display', serif",
+        fontSize: '2rem',
+        fontWeight: 400,
+        color: '#c9a227',
+        letterSpacing: '0.3em',
+        display: 'block',
+        marginTop: '5px'
+    };
+
+    const spinnerStyle = {
+        position: 'relative',
+        width: '80px',
+        height: '80px',
+        margin: '40px auto 30px'
+    };
+
+    const ringBaseStyle = {
+        position: 'absolute',
+        borderRadius: '50%',
+        border: '2px solid transparent',
+        animation: 'spin 1.5s linear infinite'
+    };
+
+    const loaderTextStyle = {
+        fontFamily: "'Cormorant Garamond', serif",
+        fontSize: '1rem',
+        color: '#888',
+        letterSpacing: '0.2em',
+        textTransform: 'uppercase',
+        animation: 'pulse 2s ease-in-out infinite'
+    };
+
     return (
-        <div className={`page-loader ${fadeOut ? 'fade-out' : ''}`}>
-            <div className="loader-content">
-                <div className="loader-logo">
-                    <span className="logo-text">UNIQUE</span>
-                    <span className="logo-accent">NAILS</span>
+        <>
+            <div style={loaderStyle}>
+                <div style={{ textAlign: 'center' }}>
+                    <div style={{ marginBottom: '40px' }}>
+                        <span style={logoTextStyle}>UNIQUE</span>
+                        <span style={logoAccentStyle}>NAILS</span>
+                    </div>
+                    <div style={spinnerStyle}>
+                        <div style={{
+                            ...ringBaseStyle,
+                            width: '100%',
+                            height: '100%',
+                            borderTopColor: '#c9a227'
+                        }}></div>
+                        <div style={{
+                            ...ringBaseStyle,
+                            width: '60px',
+                            height: '60px',
+                            top: '10px',
+                            left: '10px',
+                            borderTopColor: '#d4af37',
+                            animationDuration: '1.2s',
+                            animationDirection: 'reverse'
+                        }}></div>
+                        <div style={{
+                            ...ringBaseStyle,
+                            width: '40px',
+                            height: '40px',
+                            top: '20px',
+                            left: '20px',
+                            borderTopColor: '#e8c547',
+                            animationDuration: '0.9s'
+                        }}></div>
+                    </div>
+                    <p style={loaderTextStyle}>Loading luxury...</p>
                 </div>
-                <div className="loader-spinner">
-                    <div className="spinner-ring"></div>
-                    <div className="spinner-ring"></div>
-                    <div className="spinner-ring"></div>
-                </div>
-                <p className="loader-text">Loading luxury...</p>
             </div>
-
-            <style jsx>{`
-        .page-loader {
-          position: fixed;
-          inset: 0;
-          z-index: 9999;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
-          transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        .page-loader.fade-out {
-          opacity: 0;
-          visibility: hidden;
-        }
-
-        .loader-content {
-          text-align: center;
-        }
-
-        .loader-logo {
-          margin-bottom: 40px;
-        }
-
-        .logo-text {
-          font-family: 'Playfair Display', serif;
-          font-size: 3rem;
-          font-weight: 600;
-          color: #f5f5f5;
-          letter-spacing: 0.1em;
-          display: block;
-        }
-
-        .logo-accent {
-          font-family: 'Playfair Display', serif;
-          font-size: 2rem;
-          font-weight: 400;
-          color: #c9a227;
-          letter-spacing: 0.3em;
-          display: block;
-          margin-top: 5px;
-        }
-
-        .loader-spinner {
-          position: relative;
-          width: 80px;
-          height: 80px;
-          margin: 0 auto 30px;
-        }
-
-        .spinner-ring {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          border: 2px solid transparent;
-          border-top-color: #c9a227;
-          border-radius: 50%;
-          animation: spin 1.5s linear infinite;
-        }
-
-        .spinner-ring:nth-child(2) {
-          width: 60px;
-          height: 60px;
-          top: 10px;
-          left: 10px;
-          border-top-color: #d4af37;
-          animation-duration: 1.2s;
-          animation-direction: reverse;
-        }
-
-        .spinner-ring:nth-child(3) {
-          width: 40px;
-          height: 40px;
-          top: 20px;
-          left: 20px;
-          border-top-color: #e8c547;
-          animation-duration: 0.9s;
-        }
-
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-
-        .loader-text {
-          font-family: 'Cormorant Garamond', serif;
-          font-size: 1rem;
-          color: #888;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-          0%, 100% { opacity: 0.5; }
-          50% { opacity: 1; }
-        }
-      `}</style>
-        </div>
+            <style dangerouslySetInnerHTML={{ __html: `
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                @keyframes pulse {
+                    0%, 100% { opacity: 0.5; }
+                    50% { opacity: 1; }
+                }
+            `}} />
+        </>
     );
 }

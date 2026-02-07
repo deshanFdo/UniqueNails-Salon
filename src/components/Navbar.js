@@ -19,12 +19,10 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileOpen(false);
   }, [pathname]);
 
-  // Prevent body scroll when mobile menu is open
   useEffect(() => {
     if (isMobileOpen) {
       document.body.style.overflow = 'hidden';
@@ -46,6 +44,15 @@ export default function Navbar() {
     { href: '/contact', label: 'Contact' },
   ];
 
+  const themeToggleStyle = {
+    marginLeft: '20px'
+  };
+
+  // Responsive style for mobile
+  const themeToggleMobileStyle = typeof window !== 'undefined' && window.innerWidth <= 968
+    ? { marginLeft: 0, marginTop: '30px' }
+    : themeToggleStyle;
+
   return (
     <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="navbar-container">
@@ -65,7 +72,7 @@ export default function Navbar() {
               </Link>
             </li>
           ))}
-          <li className="nav-theme-toggle">
+          <li style={isMobileOpen ? { marginLeft: 0, marginTop: '30px' } : { marginLeft: '20px' }}>
             <ThemeToggle />
           </li>
         </ul>
@@ -81,19 +88,6 @@ export default function Navbar() {
           <span></span>
         </button>
       </div>
-
-      <style jsx>{`
-        .nav-theme-toggle {
-          margin-left: 20px;
-        }
-        
-        @media (max-width: 968px) {
-          .nav-theme-toggle {
-            margin-left: 0;
-            margin-top: 30px;
-          }
-        }
-      `}</style>
     </nav>
   );
 }

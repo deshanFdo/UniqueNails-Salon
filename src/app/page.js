@@ -323,14 +323,7 @@ export default function Home() {
           </AnimateOnScroll>
         </div>
       </section>
-
-      <style jsx>{`
-        @media (max-width: 968px) {
-          div[style*="grid-template-columns: repeat(3"] {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </>
   );
 }
+
