@@ -3,23 +3,21 @@
 import Link from 'next/link';
 
 export default function Footer() {
-    // Get all config from environment variables
-    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+1 (555) 123-4567';
+    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+91 98765 43210';
     const email = process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'hello@uniquenails.com';
-    const addressLine1 = process.env.NEXT_PUBLIC_ADDRESS_LINE1 || '123 Luxury Avenue';
-    const addressLine2 = process.env.NEXT_PUBLIC_ADDRESS_LINE2 || 'New York, NY 10001';
+    const addressLine1 = process.env.NEXT_PUBLIC_ADDRESS_LINE1 || 'My Studio';
+    const addressLine2 = process.env.NEXT_PUBLIC_ADDRESS_LINE2 || 'Your City';
 
     const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || '#';
     const facebookUrl = process.env.NEXT_PUBLIC_FACEBOOK_URL || '#';
     const pinterestUrl = process.env.NEXT_PUBLIC_PINTEREST_URL || '#';
-    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '15551234567';
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919876543210';
     const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
-    const hoursWeekday = process.env.NEXT_PUBLIC_HOURS_WEEKDAY || 'Mon–Fri: 9AM–7PM';
-    const hoursSaturday = process.env.NEXT_PUBLIC_HOURS_SATURDAY || 'Saturday: 10AM–6PM';
-    const hoursSunday = process.env.NEXT_PUBLIC_HOURS_SUNDAY || 'Sunday: Closed';
+    const hoursWeekday = process.env.NEXT_PUBLIC_HOURS_WEEKDAY || 'Mon–Fri: 10AM–7PM';
+    const hoursSaturday = process.env.NEXT_PUBLIC_HOURS_SATURDAY || 'Sat: 10AM–6PM';
+    const hoursSunday = process.env.NEXT_PUBLIC_HOURS_SUNDAY || 'Sun: Closed';
 
-    // Clean phone for tel: link
     const phoneClean = phone.replace(/[^+\d]/g, '');
 
     return (
@@ -31,8 +29,8 @@ export default function Footer() {
                             UNIQUE<span>NAILS</span>
                         </Link>
                         <p>
-                            Where elegance meets artistry. Experience the finest nail care in a luxurious,
-                            tranquil environment designed for your complete relaxation.
+                            Just me, my tools, and way too much nail polish.
+                            Come hang out and leave with nails you'll want to show off.
                         </p>
                         <div className="social-links">
                             <a href={instagramUrl} className="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
@@ -59,24 +57,23 @@ export default function Footer() {
                     </div>
 
                     <div className="footer-column">
-                        <h4>Quick Links</h4>
+                        <h4>Pages</h4>
                         <ul className="footer-links">
                             <li><Link href="/">Home</Link></li>
                             <li><Link href="/services">Services</Link></li>
                             <li><Link href="/gallery">Gallery</Link></li>
                             <li><Link href="/about">About</Link></li>
-                            <li><Link href="/contact">Book Now</Link></li>
+                            <li><Link href="/contact">Book</Link></li>
                         </ul>
                     </div>
 
                     <div className="footer-column">
-                        <h4>Services</h4>
+                        <h4>Popular</h4>
                         <ul className="footer-links">
-                            <li><Link href="/services">Classic Manicure</Link></li>
-                            <li><Link href="/services">Luxury Pedicure</Link></li>
-                            <li><Link href="/services">Gel Extensions</Link></li>
+                            <li><Link href="/services">Gel Manicure</Link></li>
                             <li><Link href="/services">Nail Art</Link></li>
-                            <li><Link href="/services">Spa Treatments</Link></li>
+                            <li><Link href="/services">Extensions</Link></li>
+                            <li><Link href="/services">Pedicure</Link></li>
                         </ul>
                     </div>
 
@@ -85,13 +82,13 @@ export default function Footer() {
                         <ul className="footer-links">
                             <li>{addressLine1}</li>
                             <li>{addressLine2}</li>
-                            <li style={{ marginTop: '15px' }}>
+                            <li style={{ marginTop: '12px' }}>
                                 <a href={`tel:${phoneClean}`}>{phone}</a>
                             </li>
                             <li>
                                 <a href={`mailto:${email}`}>{email}</a>
                             </li>
-                            <li style={{ marginTop: '15px', fontSize: '0.875rem', color: 'var(--text-muted)' }}>
+                            <li style={{ marginTop: '12px', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
                                 {hoursWeekday}<br />
                                 {hoursSaturday}<br />
                                 {hoursSunday}
@@ -101,8 +98,8 @@ export default function Footer() {
                 </div>
 
                 <div className="footer-bottom">
-                    <p>© {new Date().getFullYear()} Unique Nails. All rights reserved.</p>
-                    <p>Crafted with love & elegance.</p>
+                    <p>© {new Date().getFullYear()} Unique Nails</p>
+                    <p>Made with 💅</p>
                 </div>
             </div>
         </footer>

@@ -9,23 +9,22 @@ export default function GalleryPage() {
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [currentIndex, setCurrentIndex] = useState(0);
 
-    // Get Instagram URL from env
     const instagramUrl = process.env.NEXT_PUBLIC_INSTAGRAM_URL || 'https://instagram.com';
     const instagramHandle = instagramUrl.split('/').pop() || 'uniquenails';
 
     const galleryImages = [
-        { src: '/images/gallery/nail-1.jpg', alt: 'Elegant French Tips', category: 'Classic' },
-        { src: '/images/gallery/nail-2.jpg', alt: 'Nude Elegance', category: 'Classic' },
-        { src: '/images/gallery/nail-3.jpg', alt: 'Rose Gold Art', category: 'Art' },
-        { src: '/images/gallery/nail-4.jpg', alt: 'Minimalist Chic', category: 'Classic' },
-        { src: '/images/gallery/nail-5.jpg', alt: 'Crystal Embellishments', category: 'Luxury' },
-        { src: '/images/gallery/nail-6.jpg', alt: 'Noir Elegance', category: 'Luxury' },
-        { src: '/images/gallery/nail-7.jpg', alt: 'Ombré Blush', category: 'Art' },
-        { src: '/images/gallery/nail-8.jpg', alt: 'Champagne Dreams', category: 'Luxury' },
-        { src: '/images/gallery/nail-9.jpg', alt: 'Botanical Art', category: 'Art' },
-        { src: '/images/gallery/nail-10.jpg', alt: 'Geometric Gold', category: 'Art' },
-        { src: '/images/gallery/nail-11.jpg', alt: 'Pearl Perfection', category: 'Classic' },
-        { src: '/images/gallery/nail-12.jpg', alt: 'Starlight Glitter', category: 'Luxury' }
+        { src: '/images/gallery/nail-1.jpg', alt: 'Minimal French tips', category: 'Classic' },
+        { src: '/images/gallery/nail-2.jpg', alt: 'Soft nude set', category: 'Classic' },
+        { src: '/images/gallery/nail-3.jpg', alt: 'Rose gold chrome', category: 'Art' },
+        { src: '/images/gallery/nail-4.jpg', alt: 'Clean girl aesthetic', category: 'Classic' },
+        { src: '/images/gallery/nail-5.jpg', alt: 'Crystal gems', category: 'Glam' },
+        { src: '/images/gallery/nail-6.jpg', alt: 'Black & gold', category: 'Glam' },
+        { src: '/images/gallery/nail-7.jpg', alt: 'Ombré blush', category: 'Art' },
+        { src: '/images/gallery/nail-8.jpg', alt: 'Champagne shimmer', category: 'Glam' },
+        { src: '/images/gallery/nail-9.jpg', alt: 'Floral details', category: 'Art' },
+        { src: '/images/gallery/nail-10.jpg', alt: 'Geometric lines', category: 'Art' },
+        { src: '/images/gallery/nail-11.jpg', alt: 'Pearl accent', category: 'Classic' },
+        { src: '/images/gallery/nail-12.jpg', alt: 'Glitter gradient', category: 'Glam' }
     ];
 
     const openLightbox = (index) => {
@@ -33,21 +32,13 @@ export default function GalleryPage() {
         setLightboxOpen(true);
     };
 
-    const closeLightbox = () => {
-        setLightboxOpen(false);
-    };
-
-    const goToPrev = () => {
-        setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
-    };
-
-    const goToNext = () => {
-        setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
-    };
+    const closeLightbox = () => setLightboxOpen(false);
+    const goToPrev = () => setCurrentIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+    const goToNext = () => setCurrentIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
 
     return (
         <>
-            {/* Page Header */}
+            {/* Header */}
             <section style={{
                 paddingTop: '180px',
                 paddingBottom: '80px',
@@ -56,12 +47,12 @@ export default function GalleryPage() {
                 <div className="container">
                     <AnimateOnScroll animation="fade-up">
                         <div className="section-header" style={{ marginBottom: 0 }}>
-                            <span className="section-tag">My Portfolio</span>
-                            <h1>Gallery of Artistry</h1>
+                            <span className="section-tag">Recent Work</span>
+                            <h1>Nails I've Done</h1>
                             <div className="gold-line"></div>
                             <p>
-                                Explore my collection of exquisite nail designs, each one crafted
-                                with passion and attention to detail.
+                                A mix of everything—simple, fancy, colorful, minimal.
+                                Something here might inspire your next set!
                             </p>
                         </div>
                     </AnimateOnScroll>
@@ -104,16 +95,16 @@ export default function GalleryPage() {
             <section style={{ background: 'var(--bg-secondary)' }}>
                 <div className="container text-center">
                     <AnimateOnScroll animation="fade-up">
-                        <p className="section-tag">Follow My Journey</p>
-                        <h2 style={{ marginBottom: '20px' }}>@{instagramHandle}</h2>
+                        <p className="section-tag">Want More?</p>
+                        <h2 style={{ marginBottom: '20px' }}>Follow @{instagramHandle}</h2>
                         <p style={{
-                            maxWidth: '600px',
-                            margin: '0 auto 40px',
+                            maxWidth: '550px',
+                            margin: '0 auto 35px',
                             color: 'var(--text-muted)',
-                            fontSize: '1.125rem'
+                            fontSize: '1.1rem'
                         }}>
-                            Follow me on Instagram for daily inspiration, behind-the-scenes looks,
-                            and the latest nail art trends.
+                            I post all my latest work there first. Plus some behind-the-scenes
+                            and the occasional nail meme.
                         </p>
                         <a
                             href={instagramUrl}
@@ -121,13 +112,12 @@ export default function GalleryPage() {
                             rel="noopener noreferrer"
                             className="btn btn-primary"
                         >
-                            Follow on Instagram
+                            Check it Out
                         </a>
                     </AnimateOnScroll>
                 </div>
             </section>
 
-            {/* Lightbox */}
             <Lightbox
                 isOpen={lightboxOpen}
                 onClose={closeLightbox}
