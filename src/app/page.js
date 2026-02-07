@@ -1,14 +1,29 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import AnimateOnScroll from '@/components/AnimateOnScroll';
 
 export default function Home() {
+  const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+94 77 123 4567';
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94771234567';
+  const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+  const phoneClean = phone.replace(/[^+\d]/g, '');
+
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
-        <div className="container">
+      <section className="hero" style={{ position: 'relative', overflow: 'hidden' }}>
+        {/* Background gradient */}
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          background: 'linear-gradient(135deg, var(--champagne) 0%, var(--nude) 30%, var(--accent-gold-light) 70%, var(--bg-primary) 100%)',
+          opacity: 0.5
+        }} />
+
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
           <div className="hero-content">
             <AnimateOnScroll animation="fade-up">
               <p className="hero-subtitle">Hey there, gorgeous</p>
@@ -25,12 +40,18 @@ export default function Home() {
             </AnimateOnScroll>
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="hero-buttons">
-                <Link href="/contact" className="btn btn-primary">
-                  Let's Do This
-                </Link>
-                <Link href="/gallery" className="btn btn-outline">
-                  See My Work
-                </Link>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                  </svg>
+                  WhatsApp Me
+                </a>
+                <a href={`tel:${phoneClean}`} className="btn btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                  </svg>
+                  Call Now
+                </a>
               </div>
             </AnimateOnScroll>
           </div>
@@ -64,7 +85,7 @@ export default function Home() {
                 </div>
                 <h3>Custom Nail Art</h3>
                 <p>Got an idea in your head? Show me a Pinterest board, describe it, or just let me surprise you. I love a creative challenge.</p>
-                <div className="service-price">From ₹500</div>
+                <div className="service-price">From LKR 1,500</div>
               </div>
             </AnimateOnScroll>
 
@@ -77,7 +98,7 @@ export default function Home() {
                 </div>
                 <h3>Gel & Extensions</h3>
                 <p>Want length? Strength? Both? My gel extensions last 3-4 weeks and won't wreck your natural nails. Promise.</p>
-                <div className="service-price">From ₹800</div>
+                <div className="service-price">From LKR 2,500</div>
               </div>
             </AnimateOnScroll>
 
@@ -90,7 +111,7 @@ export default function Home() {
                 </div>
                 <h3>The Full Treatment</h3>
                 <p>Mani, pedi, the works. Sometimes you just need an hour to yourself. I'll handle the nails, you handle the relaxing.</p>
-                <div className="service-price">From ₹1,200</div>
+                <div className="service-price">From LKR 3,500</div>
               </div>
             </AnimateOnScroll>
           </div>
@@ -122,40 +143,40 @@ export default function Home() {
             gap: '20px'
           }}>
             {[
-              { gradient: 'linear-gradient(135deg, #faf8f5 0%, #e8d5c4 50%, #c9a227 100%)', label: 'Minimal French' },
-              { gradient: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #c9a227 100%)', label: 'Dark & Moody' },
-              { gradient: 'linear-gradient(135deg, #e8d5c4 0%, #f7e7ce 50%, #fffff0 100%)', label: 'Soft Neutrals' }
+              { src: '/images/gallery/nail-1.jpg', label: 'Minimal French' },
+              { src: '/images/gallery/nail-2.jpg', label: 'Soft Neutrals' },
+              { src: '/images/gallery/nail-3.jpg', label: 'Rose Gold Chrome' }
             ].map((item, index) => (
               <AnimateOnScroll key={index} animation="scale" delay={(index + 1) * 100}>
                 <div style={{
                   aspectRatio: '4/3',
-                  background: item.gradient,
                   borderRadius: '4px',
-                  display: 'flex',
-                  alignItems: 'flex-end',
-                  padding: '20px',
                   position: 'relative',
                   overflow: 'hidden',
-                  cursor: 'pointer',
-                  transition: 'transform 0.4s ease, box-shadow 0.4s ease'
-                }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'scale(1.02)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'scale(1)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  <span style={{
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '1.125rem',
-                    color: index === 1 ? '#f5f5f5' : '#1a1a1a',
-                    textShadow: index === 1 ? '0 2px 4px rgba(0,0,0,0.5)' : 'none'
+                  cursor: 'pointer'
+                }}>
+                  <Image
+                    src={item.src}
+                    alt={item.label}
+                    fill
+                    style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    padding: '20px',
+                    background: 'linear-gradient(transparent, rgba(0,0,0,0.7))'
                   }}>
-                    {item.label}
-                  </span>
+                    <span style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '1.125rem',
+                      color: '#fff'
+                    }}>
+                      {item.label}
+                    </span>
+                  </div>
                 </div>
               </AnimateOnScroll>
             ))}
@@ -188,8 +209,7 @@ export default function Home() {
                   <div style={{
                     textAlign: 'center',
                     color: 'var(--accent-gold-dark)',
-                    fontFamily: 'var(--font-display)',
-                    fontSize: '2rem'
+                    fontFamily: 'var(--font-display)'
                   }}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={0.5} style={{ marginBottom: '20px' }}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
@@ -264,7 +284,7 @@ export default function Home() {
                   Finally found someone who actually takes their time! My nails have never lasted this long.
                   Plus we always end up having the best conversations.
                 </p>
-                <div className="testimonial-author">Priya M.</div>
+                <div className="testimonial-author">Chamari S.</div>
                 <div className="testimonial-role">Regular since 2023</div>
               </div>
             </AnimateOnScroll>
@@ -276,7 +296,7 @@ export default function Home() {
                   I showed her a super complicated design from Pinterest and she nailed it (pun intended).
                   Other places said it couldn't be done. She made it look easy.
                 </p>
-                <div className="testimonial-author">Sneha K.</div>
+                <div className="testimonial-author">Nadeesha K.</div>
                 <div className="testimonial-role">Nail Art Lover</div>
               </div>
             </AnimateOnScroll>
@@ -288,7 +308,7 @@ export default function Home() {
                   The vibe is so chill and the space is super clean. I always leave feeling relaxed.
                   It's like therapy but you get pretty nails at the end.
                 </p>
-                <div className="testimonial-author">Ananya R.</div>
+                <div className="testimonial-author">Dilini R.</div>
                 <div className="testimonial-role">Monthly Mani Club</div>
               </div>
             </AnimateOnScroll>
@@ -312,15 +332,23 @@ export default function Home() {
               margin: '0 auto 40px',
               fontSize: '1.125rem'
             }}>
-              Your next favorite nail look is just a booking away.
-              DM me, WhatsApp me, or book right here. Whatever's easiest for you.
+              Your next favorite nail look is just a call or message away.
+              WhatsApp me or give me a ring—I'll get back to you super quick.
             </p>
-            <Link href="/contact" className="btn" style={{
-              background: '#0a0a0a',
-              color: 'var(--accent-gold)'
-            }}>
-              Book Now
-            </Link>
+            <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn" style={{ background: '#0a0a0a', color: 'var(--accent-gold)', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                </svg>
+                WhatsApp
+              </a>
+              <a href={`tel:${phoneClean}`} className="btn" style={{ background: '#0a0a0a', color: 'var(--accent-gold)', display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                </svg>
+                Call Me
+              </a>
+            </div>
           </AnimateOnScroll>
         </div>
       </section>

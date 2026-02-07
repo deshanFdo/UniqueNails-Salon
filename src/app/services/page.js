@@ -1,9 +1,13 @@
 'use client';
 
 import AnimateOnScroll from '@/components/AnimateOnScroll';
-import Link from 'next/link';
 
 export default function ServicesPage() {
+    const phone = process.env.NEXT_PUBLIC_CONTACT_PHONE || '+94 77 123 4567';
+    const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '94771234567';
+    const whatsappUrl = `https://wa.me/${whatsappNumber}`;
+    const phoneClean = phone.replace(/[^+\d]/g, '');
+
     const services = [
         {
             category: 'Manicures',
@@ -12,19 +16,19 @@ export default function ServicesPage() {
                     name: 'Basic Mani',
                     description: 'Shape, buff, cuticle care, and a polish of your choice. Quick but thorough.',
                     duration: '30 mins',
-                    price: '₹350'
+                    price: 'LKR 1,000'
                 },
                 {
                     name: 'Gel Manicure',
                     description: 'Same as basic but with gel polish that lasts 2-3 weeks without chipping. Game changer.',
                     duration: '45 mins',
-                    price: '₹550'
+                    price: 'LKR 1,800'
                 },
                 {
                     name: 'Pamper Mani',
                     description: 'The full experience—soak, scrub, massage, mask, and gel polish. You deserve this.',
                     duration: '60 mins',
-                    price: '₹800'
+                    price: 'LKR 2,500'
                 }
             ]
         },
@@ -35,19 +39,19 @@ export default function ServicesPage() {
                     name: 'Basic Pedi',
                     description: 'Foot soak, nail shaping, cuticle work, and polish. Your feet will thank you.',
                     duration: '40 mins',
-                    price: '₹450'
+                    price: 'LKR 1,500'
                 },
                 {
                     name: 'Gel Pedicure',
                     description: 'The works plus gel polish. Sandal season ready.',
                     duration: '50 mins',
-                    price: '₹650'
+                    price: 'LKR 2,200'
                 },
                 {
                     name: 'Luxury Foot Spa',
                     description: 'Extended soak, callus removal, sugar scrub, hot towels, leg massage, and gel finish. Bliss.',
                     duration: '75 mins',
-                    price: '₹1,000'
+                    price: 'LKR 3,500'
                 }
             ]
         },
@@ -58,25 +62,25 @@ export default function ServicesPage() {
                     name: 'Simple Art',
                     description: 'Accent nails, French tips, minimal designs. Subtle but cute.',
                     duration: '+15 mins',
-                    price: 'From ₹100'
+                    price: 'From LKR 300'
                 },
                 {
                     name: 'Full Custom Art',
                     description: 'Go wild. Bring your Pinterest board, show me that Instagram reel. If I can see it, I can do it.',
                     duration: '+30-45 mins',
-                    price: 'From ₹300'
+                    price: 'From LKR 800'
                 },
                 {
                     name: 'Gel Extensions',
                     description: 'Need length? I use soft gel which is gentler on natural nails. Customizable shape and length.',
                     duration: '90 mins',
-                    price: 'From ₹1,200'
+                    price: 'From LKR 3,500'
                 },
                 {
                     name: 'Repair / Single Nail',
                     description: 'Broke a nail? I got you. Quick fix so your set looks fresh again.',
                     duration: '15 mins',
-                    price: '₹150'
+                    price: 'LKR 400'
                 }
             ]
         }
@@ -197,8 +201,8 @@ export default function ServicesPage() {
                                 {[
                                     'Prices are for service only. Add-ons like art, gems, or chrome finishes vary based on complexity.',
                                     'First-time gel extension appointments may take a bit longer—I like to get your shape just right.',
-                                    'Running late? Just text me. Life happens, I get it.',
-                                    'Cancellations within 24 hours may have a small fee. Please just let me know if plans change!'
+                                    'Running late? Just text me on WhatsApp. Life happens, I get it.',
+                                    'Please let me know a day before if you need to cancel or reschedule!'
                                 ].map((note, i) => (
                                     <li key={i} style={{
                                         padding: '12px 0',
@@ -228,11 +232,22 @@ export default function ServicesPage() {
                             color: 'var(--text-muted)',
                             fontSize: '1.1rem'
                         }}>
-                            Pick a service (or don't—we can figure it out when you're here).
+                            Just give me a call or drop me a WhatsApp message. I'll get back to you soon!
                         </p>
-                        <Link href="/contact" className="btn btn-primary">
-                            Book Appointment
-                        </Link>
+                        <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z" />
+                                </svg>
+                                WhatsApp Me
+                            </a>
+                            <a href={`tel:${phoneClean}`} className="btn btn-outline" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+                                </svg>
+                                Call Now
+                            </a>
+                        </div>
                     </AnimateOnScroll>
                 </div>
             </section>
