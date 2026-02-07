@@ -14,8 +14,8 @@ export default function Footer() {
     const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
     const hoursWeekday = process.env.NEXT_PUBLIC_HOURS_WEEKDAY || 'Mon–Fri: 10AM–7PM';
-    const hoursSaturday = process.env.NEXT_PUBLIC_HOURS_SATURDAY || 'Sat: 10AM–6PM';
-    const hoursSunday = process.env.NEXT_PUBLIC_HOURS_SUNDAY || 'Sun: Closed';
+    const hoursSaturday = process.env.NEXT_PUBLIC_HOURS_SATURDAY || 'Sat: 9AM–5PM';
+    const hoursSunday = process.env.NEXT_PUBLIC_HOURS_SUNDAY || 'Sun: By Appointment';
 
     const phoneClean = phone.replace(/[^+\d]/g, '');
 
@@ -48,8 +48,8 @@ export default function Footer() {
                                     UNIQUE<span>NAILS</span>
                                 </Link>
                                 <p>
-                                    Just me, my tools, and way too much nail polish.
-                                    Come hang out and leave with nails you'll want to show off.
+                                    Your personal nail studio in Colombo.
+                                    Beautiful nails, personalized service, one client at a time.
                                 </p>
                                 <div className="social-links">
                                     <a href={whatsappUrl} className="social-link" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
@@ -71,28 +71,28 @@ export default function Footer() {
                             </div>
 
                             <div className="footer-column">
-                                <h4>Pages</h4>
+                                <h4>Quick Links</h4>
                                 <ul className="footer-links">
                                     <li><Link href="/">Home</Link></li>
                                     <li><Link href="/services">Services</Link></li>
                                     <li><Link href="/gallery">Gallery</Link></li>
-                                    <li><Link href="/about">About</Link></li>
+                                    <li><Link href="/about">About Us</Link></li>
                                     <li><Link href="/contact">Contact</Link></li>
                                 </ul>
                             </div>
 
                             <div className="footer-column">
-                                <h4>Popular</h4>
+                                <h4>Our Services</h4>
                                 <ul className="footer-links">
                                     <li><Link href="/services">Gel Manicure</Link></li>
-                                    <li><Link href="/services">Nail Art</Link></li>
-                                    <li><Link href="/services">Extensions</Link></li>
-                                    <li><Link href="/services">Pedicure</Link></li>
+                                    <li><Link href="/services">Custom Nail Art</Link></li>
+                                    <li><Link href="/services">Gel Extensions</Link></li>
+                                    <li><Link href="/services">Spa Pedicure</Link></li>
                                 </ul>
                             </div>
 
                             <div className="footer-column">
-                                <h4>Contact</h4>
+                                <h4>Get in Touch</h4>
                                 <ul className="footer-links">
                                     <li>{addressLine1}</li>
                                     <li>{addressLine2}</li>
@@ -112,8 +112,8 @@ export default function Footer() {
                         </div>
 
                         <div className="footer-bottom">
-                            <p>© {new Date().getFullYear()} Unique Nails</p>
-                            <p>Made with 💅</p>
+                            <p>© {new Date().getFullYear()} Unique Nails. All rights reserved.</p>
+                            <p>Made with 💅 in Colombo</p>
                         </div>
                     </div>
 
@@ -149,7 +149,7 @@ export default function Footer() {
                         </div>
 
                         <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem', margin: 0 }}>
-                            © {new Date().getFullYear()} Unique Nails • Made with 💅
+                            © {new Date().getFullYear()} Unique Nails
                         </p>
                     </div>
                 </div>
