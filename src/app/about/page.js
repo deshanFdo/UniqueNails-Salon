@@ -100,25 +100,35 @@ export default function AboutPage() {
                                 description: "You want something specific? Show me. You have no idea what you want? We'll figure it out together. No pressure, no judgment."
                             },
                             {
-                                title: 'Clean everything, every time',
+                                title: 'Spotlessly clean, always',
                                 description: "I'm a bit paranoid about hygiene, honestly. Every tool is sterilized, every surface is wiped down. It's not negotiable."
                             },
                             {
                                 title: 'Quality products only',
                                 description: "I use brands I actually trust. If I wouldn't put it on my own nails, it's not touching yours. Simple as that."
-                            },
-                            {
-                                title: 'No rush, ever',
-                                description: "I book appointments with enough buffer time so you never feel hurried. Your nails get the time they deserve."
                             }
                         ].map((item, index) => (
                             <AnimateOnScroll key={index} animation="fade-up" delay={(index + 1) * 100}>
                                 <div style={{
                                     background: 'var(--bg-card)',
                                     border: '1px solid var(--border-color)',
+                                    borderRadius: '16px',
                                     padding: '35px 30px',
-                                    height: '100%'
-                                }}>
+                                    height: '100%',
+                                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                    cursor: 'default'
+                                }}
+                                    onMouseEnter={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+                                        e.currentTarget.style.boxShadow = '0 15px 35px rgba(201, 162, 39, 0.12)';
+                                        e.currentTarget.style.borderColor = 'var(--accent-gold-light)';
+                                    }}
+                                    onMouseLeave={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                                        e.currentTarget.style.boxShadow = 'none';
+                                        e.currentTarget.style.borderColor = 'var(--border-color)';
+                                    }}
+                                >
                                     <h3 style={{
                                         color: 'var(--accent-gold)',
                                         marginBottom: '15px',

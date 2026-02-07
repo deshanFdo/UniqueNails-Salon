@@ -136,11 +136,25 @@ export default function ServicesPage() {
                                     <div style={{
                                         background: 'var(--bg-card)',
                                         border: '1px solid var(--border-color)',
+                                        borderRadius: '16px',
                                         padding: '30px',
                                         height: '100%',
                                         display: 'flex',
-                                        flexDirection: 'column'
-                                    }}>
+                                        flexDirection: 'column',
+                                        transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                                        cursor: 'default'
+                                    }}
+                                        onMouseEnter={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+                                            e.currentTarget.style.boxShadow = '0 15px 35px rgba(201, 162, 39, 0.12)';
+                                            e.currentTarget.style.borderColor = 'var(--accent-gold-light)';
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            e.currentTarget.style.transform = 'translateY(0) scale(1)';
+                                            e.currentTarget.style.boxShadow = 'none';
+                                            e.currentTarget.style.borderColor = 'var(--border-color)';
+                                        }}
+                                    >
                                         <div style={{
                                             display: 'flex',
                                             justifyContent: 'space-between',
