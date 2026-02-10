@@ -14,21 +14,27 @@ export default function ServicesPage() {
             items: [
                 {
                     name: 'Classic Manicure',
-                    description: 'A beautifully simple treatment—shaping, cuticle care, and your choice of polish for neat, polished nails.',
-                    duration: '30 mins',
-                    price: 'LKR 1,000'
-                },
-                {
-                    name: 'Gel Manicure',
-                    description: 'Long-lasting gel polish that stays chip-free and glossy for 2-3 weeks. Perfect for busy lifestyles.',
+                    description: 'A beautifully simple treatment—shaping, cuticle care, and polish for neat, polished nails.',
                     duration: '45 mins',
-                    price: 'LKR 1,800'
+                    price: 'LKR 2,800'
                 },
                 {
-                    name: 'Luxury Manicure',
-                    description: 'The full experience—exfoliation, hydrating mask, relaxing massage, and a flawless gel finish. You deserve it.',
+                    name: 'Acrylic Nails (Manicure)',
+                    description: 'Strong, durable acrylic extensions with your choice of color. Perfect for length and style.',
                     duration: '60 mins',
-                    price: 'LKR 2,500'
+                    price: 'LKR 3,000'
+                },
+                {
+                    name: 'Gel Nails (Manicure)',
+                    description: 'Long-lasting gel polish that stays chip-free and glossy for 2-3 weeks. Perfect for busy lifestyles.',
+                    duration: '50 mins',
+                    price: 'LKR 3,800'
+                },
+                {
+                    name: 'Dipping Powder Nails (Manicure)',
+                    description: 'Lightweight yet durable dip powder finish. No UV light needed, with a natural feel.',
+                    duration: '55 mins',
+                    price: 'LKR 3,000'
                 }
             ]
         },
@@ -38,25 +44,66 @@ export default function ServicesPage() {
                 {
                     name: 'Classic Pedicure',
                     description: 'Complete foot care including a soothing soak, exfoliation, nail shaping, and polish for happy feet.',
-                    duration: '40 mins',
-                    price: 'LKR 1,500'
-                },
-                {
-                    name: 'Gel Pedicure',
-                    description: 'Everything in our classic pedicure, plus long-lasting gel polish. Walk out with perfectly polished toes.',
                     duration: '50 mins',
-                    price: 'LKR 2,200'
+                    price: 'LKR 3,500'
                 },
                 {
-                    name: 'Spa Pedicure',
-                    description: 'Pure indulgence—extended soak, callus treatment, sugar scrub, hot towels, and a blissful leg massage.',
-                    duration: '75 mins',
+                    name: 'Acrylic Nails (Pedicure)',
+                    description: 'Acrylic extensions for your toes—great for sandal season or special occasions.',
+                    duration: '60 mins',
+                    price: 'LKR 3,500'
+                },
+                {
+                    name: 'Gel Nails (Pedicure)',
+                    description: 'Everything in our classic pedicure, plus long-lasting gel polish. Walk out with perfectly polished toes.',
+                    duration: '55 mins',
+                    price: 'LKR 4,000'
+                },
+                {
+                    name: 'Dipping Powder Nails (Pedicure)',
+                    description: 'Durable dip powder finish for your toes. Lasts longer than regular polish and looks stunning.',
+                    duration: '55 mins',
                     price: 'LKR 3,500'
                 }
             ]
         },
         {
-            category: 'Nail Art & Enhancements',
+            category: 'Basic Nail Services',
+            items: [
+                {
+                    name: 'Nail Shaping & Filing',
+                    description: 'Quick trim and shape to keep your nails looking neat and tidy. Perfect for maintenance.',
+                    duration: '15 mins',
+                    price: 'LKR 500'
+                },
+                {
+                    name: 'Regular Polish Application',
+                    description: 'Classic nail polish application in your choice of color. A simple refresh for your nails.',
+                    duration: '20 mins',
+                    price: 'LKR 800'
+                },
+                {
+                    name: 'Polish Removal',
+                    description: 'Safe removal of regular or gel polish. Includes nail conditioning treatment.',
+                    duration: '15 mins',
+                    price: 'LKR 500'
+                },
+                {
+                    name: 'Nail Repair',
+                    description: 'Broken or lifted nail? No worries—we can fix it and get your set looking perfect again.',
+                    duration: '15 mins',
+                    price: 'LKR 400'
+                },
+                {
+                    name: 'Cuticle Care',
+                    description: 'Professional cuticle treatment including pushing, trimming, and moisturizing for healthy nail beds.',
+                    duration: '15 mins',
+                    price: 'LKR 600'
+                }
+            ]
+        },
+        {
+            category: 'Nail Art & Extras',
             items: [
                 {
                     name: 'Accent Art',
@@ -71,16 +118,16 @@ export default function ServicesPage() {
                     price: 'From LKR 800'
                 },
                 {
-                    name: 'Gel Extensions',
-                    description: 'Professional soft gel extensions for beautiful length and strength. Gentle on your natural nails.',
-                    duration: '90 mins',
-                    price: 'From LKR 3,500'
+                    name: 'Gems & Embellishments',
+                    description: 'Add some sparkle with rhinestones, gems, or 3D nail decorations for extra glam.',
+                    duration: '+15 mins',
+                    price: 'From LKR 200'
                 },
                 {
-                    name: 'Repair Service',
-                    description: 'Broken or lifted nail? No worries—we can fix it and get your set looking perfect again.',
-                    duration: '15 mins',
-                    price: 'LKR 400'
+                    name: 'French Tips',
+                    description: 'Classic or colored French tip design. Timeless elegance for any occasion.',
+                    duration: '+15 mins',
+                    price: 'LKR 500'
                 }
             ]
         }
@@ -214,7 +261,7 @@ export default function ServicesPage() {
                             }}>
                                 {[
                                     'These are base prices. Add-ons like nail art, gems, or specialty finishes are priced based on complexity.',
-                                    'First-time gel extension appointments may take a bit longer as we customize the perfect fit for you.',
+                                    'First-time extension appointments may take a bit longer as we customize the perfect fit for you.',
                                     "We appreciate 24 hours' notice if you need to cancel or reschedule—it helps us accommodate everyone.",
                                     "All appointments are private, one-on-one sessions. It's just you and us, no distractions."
                                 ].map((note, i) => (
